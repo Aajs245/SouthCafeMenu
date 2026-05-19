@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>The South Cafe — Authentic South Indian Flavours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+:root {
+  --turmeric: #E8A020;
+  --turmeric-deep: #C07A10;
+  --turmeric-pale: #F5D080;
+  --banana: #F2E4A0;
+  --banana-light: #FBF4D0;
+  --cream: #FDF6E3;
+  --green-deep: #1A4A18;
+  --green-mid: #2A6A24;
+  --green-leaf: #3D7A35;
+  --brown-coffee: #5A2D0C;
+  --brown-mid: #8B4513;
+  --brown-light: #C4773A;
+  --orange-muted: #D4621A;
+  --orange-warm: #E07828;
+  --red-spice: #B02A10;
+  --shadow: rgba(90,45,12,0.18);
+  --shadow-deep: rgba(90,45,12,0.32);
+  --gold: #C9820A;
+  --gold-bright: #E8A020;
+  --wa-green: #25D366;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--banana-light);
+  font-family: 'Poppins', sans-serif;
+  color: var(--brown-coffee);
+  overflow-x: hidden;
+}
+
+/* ── KOLAM TEXTURE BG ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(232,160,32,0.07) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(42,106,36,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 60% 30%, rgba(208,98,26,0.05) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ══════════════════════════════════
+   HERO SECTION
+══════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(160deg,
+    #2A1A08 0%,
+    #3D2410 20%,
+    #4A2E14 40%,
+    #3A2010 60%,
+    #2E1A0A 80%,
+    #1E1008 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 80px 24px 60px;
+}
+
+/* Warm glow overlays */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(232,160,32,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 20% 70%, rgba(208,98,26,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 60%, rgba(42,106,36,0.10) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Banana leaf pattern overlay */
+.hero-leaf-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  overflow: hidden;
+}
+
+/* Kolam decorative ring */
+.hero-kolam {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+/* Steam animations */
+@keyframes steamRise {
+  0%   { transform: translateY(0) scaleX(1); opacity: 0; }
+  15%  { opacity: 0.7; }
+  70%  { opacity: 0.4; }
+  100% { transform: translateY(-80px) scaleX(1.6); opacity: 0; }
+}
+@keyframes steamRise2 {
+  0%   { transform: translateY(0) scaleX(1) rotate(5deg); opacity: 0; }
+  20%  { opacity: 0.5; }
+  75%  { opacity: 0.3; }
+  100% { transform: translateY(-65px) scaleX(0.8) rotate(-5deg); opacity: 0; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+@keyframes shimmerGold {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(232,160,32,0.4), 0 4px 20px rgba(0,0,0,0.3); }
+  50%       { box-shadow: 0 0 35px rgba(232,160,32,0.7), 0 4px 30px rgba(0,0,0,0.4); }
+}
+@keyframes waBounce {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50%       { transform: scale(1.08) translateY(-4px); }
+}
+@keyframes pinBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+@keyframes leafSway {
+  0%, 100% { transform: rotate(-2deg); }
+  50%       { transform: rotate(2deg); }
+}
+
+.steam-wrap {
+  display: flex;
+  gap: 6px;
+  align-items: flex-end;
+  height: 70px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+.steam-bar {
+  width: 5px;
+  border-radius: 5px;
+  background: linear-gradient(to top, rgba(255,240,200,0.6), transparent);
+}
+.sb1 { height: 24px; animation: steamRise 3.5s ease-in-out infinite 0s; }
+.sb2 { height: 36px; animation: steamRise2 3.5s ease-in-out infinite 0.6s; }
+.sb3 { height: 28px; animation: steamRise 3.5s ease-in-out infinite 1.2s; }
+.sb4 { height: 18px; animation: steamRise2 3.5s ease-in-out infinite 1.8s; }
+.sb5 { height: 32px; animation: steamRise 3.5s ease-in-out infinite 0.9s; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(232,160,32,0.15);
+  border: 1px solid rgba(232,160,32,0.4);
+  border-radius: 40px;
+  padding: 7px 20px;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--turmeric-pale);
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+  animation: fadeSlideUp 0.8s ease both;
+}
+
+.hero-eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 16px;
+  color: var(--turmeric-pale);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+  animation: fadeSlideUp 0.9s ease 0.1s both;
+  opacity: 0.85;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(52px, 12vw, 76px);
+  line-height: 0.9;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--turmeric-pale) 0%, var(--turmeric) 40%, #FFF0B0 70%, var(--turmeric-pale) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerGold 5s linear infinite, fadeSlideUp 1s ease 0.15s both;
+  filter: drop-shadow(0 0 40px rgba(232,160,32,0.35));
+  margin-bottom: 4px;
+}
+
+.hero-title-cafe {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(32px, 8vw, 46px);
+  letter-spacing: 18px;
+  text-transform: uppercase;
+  color: rgba(245,208,128,0.9);
+  display: block;
+  animation: fadeSlideUp 1s ease 0.2s both;
+  line-height: 1.1;
+}
+
+.hero-divider {
+  width: 180px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--turmeric), transparent);
+  margin: 20px auto;
+  animation: fadeSlideUp 1s ease 0.3s both;
+}
+
+.hero-ornament {
+  font-size: 10px;
+  letter-spacing: 10px;
+  color: var(--turmeric);
+  opacity: 0.7;
+  margin-bottom: 16px;
+  animation: fadeSlideUp 1s ease 0.35s both;
+}
+
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(245,212,128,0.8);
+  letter-spacing: 4px;
+  margin-bottom: 14px;
+  animation: fadeSlideUp 1s ease 0.4s both;
+}
+
+.hero-phone {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: rgba(212,176,96,0.7);
+  margin-bottom: 36px;
+  animation: fadeSlideUp 1s ease 0.45s both;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeSlideUp 1s ease 0.5s both;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--turmeric) 0%, var(--turmeric-deep) 100%);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 15px 28px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  animation: pulseGlow 3s ease-in-out infinite;
+  transition: transform 0.2s ease;
+}
+.btn-primary:hover { transform: translateY(-3px) scale(1.03); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  color: var(--turmeric-pale);
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 14px 26px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(232,160,32,0.45);
+  cursor: pointer;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+}
+.btn-secondary:hover {
+  background: rgba(232,160,32,0.15);
+  border-color: var(--turmeric);
+  transform: translateY(-3px);
+}
+
+/* Hero food illustrations */
+.hero-food-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin: 36px 0 0;
+  animation: fadeSlideUp 1.1s ease 0.6s both;
+}
+
+.food-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(232,160,32,0.2);
+  border-radius: 30px;
+  padding: 8px 14px;
+  font-size: 11px;
+  color: rgba(245,208,128,0.75);
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(6px);
+}
+
+/* scroll indicator */
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.45;
+  animation: float 2s ease-in-out infinite;
+}
+.scroll-hint span {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--turmeric-pale);
+}
+.scroll-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 1.5px solid var(--turmeric-pale);
+  border-bottom: 1.5px solid var(--turmeric-pale);
+  transform: rotate(45deg);
+}
+
+/* ══════════════════════════════════
+   SECTION WRAPPER
+══════════════════════════════════ */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 70px 20px;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--orange-muted);
+  margin-bottom: 14px;
+}
+.section-tag::before, .section-tag::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1.5px;
+  background: var(--orange-muted);
+  opacity: 0.6;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 6vw, 40px);
+  font-weight: 700;
+  color: var(--brown-coffee);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.section-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--brown-mid);
+  letter-spacing: 1px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* ══════════════════════════════════
+   MENU SECTION
+══════════════════════════════════ */
+.menu-section {
+  background: var(--cream);
+  position: relative;
+}
+
+.menu-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--green-deep), var(--turmeric), var(--orange-muted), var(--turmeric), var(--green-deep));
+}
+
+.menu-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.menu-intro {
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* Category filter tabs */
+.cat-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 0 0 12px;
+  margin-bottom: 32px;
+  scrollbar-width: none;
+}
+.cat-tabs::-webkit-scrollbar { display: none; }
+
+.cat-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 9px 18px;
+  border-radius: 30px;
+  border: 1.5px solid rgba(90,45,12,0.15);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  color: var(--brown-mid);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cat-tab.active,
+.cat-tab:hover {
+  background: var(--turmeric);
+  border-color: var(--turmeric);
+  color: #fff;
+}
+
+/* Category card */
+.cat {
+  background: #fff;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px var(--shadow), 0 1px 4px rgba(0,0,0,0.05);
+  border: 1px solid rgba(232,160,32,0.12);
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.cat:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 36px var(--shadow-deep);
+}
+.cat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--turmeric-deep), var(--turmeric), var(--turmeric-pale));
+}
+
+.cat-hdr {
+  padding: 20px 22px 16px;
+  border-bottom: 1px solid rgba(232,160,32,0.1);
+  background: linear-gradient(135deg, rgba(248,240,210,0.6) 0%, rgba(255,255,255,0.8) 100%);
+}
+
+.cat-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cat-icon-wrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--turmeric), var(--turmeric-deep));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(201,130,10,0.3);
+}
+
+.cat-info { flex: 1; }
+
+.cat-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--brown-coffee);
+  letter-spacing: 1px;
+}
+
+.cat-sub {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: var(--orange-muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.cat-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--turmeric-deep);
+  background: rgba(232,160,32,0.12);
+  border-radius: 20px;
+  padding: 4px 12px;
+}
+
+/* Items */
+.items { padding: 8px 22px 14px; }
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(90,45,12,0.06);
+  gap: 8px;
+  position: relative;
+}
+.item:last-child { border-bottom: none; }
+
+.item-veg {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--green-mid);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.item-veg::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--green-mid);
+  border-radius: 50%;
+}
+
+.i-name {
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--brown-coffee);
+  flex: 1;
+  line-height: 1.4;
+}
+
+.i-featured .i-name {
+  font-weight: 500;
+  color: #3A1A06;
+}
+
+.i-best-tag {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--orange-muted);
+  background: rgba(208,98,26,0.1);
+  border-radius: 20px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+.i-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--turmeric-deep);
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 52px;
+  text-align: right;
+}
+
+/* Separator */
+.sep {
+  text-align: center;
+  padding: 30px 0 24px;
+  position: relative;
+}
+.sep::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 40px; right: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,130,10,0.25), transparent);
+}
+.sep-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--cream);
+  padding: 0 20px;
+  position: relative;
+}
+.sep span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 5px;
+  color: var(--brown-mid);
+  opacity: 0.7;
+}
+.sep-leaf {
+  font-size: 16px;
+  opacity: 0.5;
+}
+
+/* Shakes */
+.shakes-price-banner {
+  margin: 0 22px 14px;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, rgba(232,160,32,0.12), rgba(208,98,26,0.08));
+  border: 1.5px solid rgba(232,160,32,0.3);
+  border-radius: 12px;
+  text-align: center;
+}
+.shakes-price-banner span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--turmeric-deep);
+}
+
+.shakes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  padding: 0 22px 20px;
+}
+
+.shake-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(248,240,210,0.5);
+  border: 1px solid rgba(232,160,32,0.15);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+.shake-chip:hover {
+  background: rgba(232,160,32,0.1);
+  border-color: rgba(232,160,32,0.35);
+}
+
+.s-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.s-name {
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--brown-coffee);
+}
+
+/* ══════════════════════════════════
+   PARTY / EVENTS SECTION
+══════════════════════════════════ */
+.party-section {
+  background: linear-gradient(145deg, #2A1A08 0%, #3D2410 35%, #2E1C0C 65%, #1E120A 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.party-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 30% 40%, rgba(232,160,32,0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 70%, rgba(208,98,26,0.10) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.party-kolam {
+  position: absolute;
+  right: -80px;
+  bottom: -80px;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.party-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.party-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 6vw, 38px);
+  font-weight: 700;
+  color: var(--turmeric-pale);
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.party-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: rgba(245,208,128,0.65);
+  letter-spacing: 1px;
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.party-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.party-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(232,160,32,0.2);
+  border-radius: 18px;
+  padding: 22px 16px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.party-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--turmeric), transparent);
+}
+.party-card:hover {
+  background: rgba(232,160,32,0.1);
+  border-color: rgba(232,160,32,0.4);
+  transform: translateY(-4px);
+}
+.party-card:first-child {
+  grid-column: 1 / -1;
+}
+
+.party-icon {
+  font-size: 34px;
+  margin-bottom: 12px;
+  display: block;
+  animation: float 3s ease-in-out infinite;
+}
+.party-card:nth-child(2) .party-icon { animation-delay: 0.5s; }
+.party-card:nth-child(3) .party-icon { animation-delay: 1s; }
+.party-card:nth-child(4) .party-icon { animation-delay: 1.5s; }
+.party-card:nth-child(5) .party-icon { animation-delay: 2s; }
+
+.party-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--turmeric-pale);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.party-card-desc {
+  font-size: 11px;
+  color: rgba(245,208,128,0.55);
+  line-height: 1.6;
+}
+
+.party-ctas {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-party {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--turmeric) 0%, #B86A08 100%);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 15px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 24px rgba(201,130,10,0.4);
+}
+.btn-party:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 32px rgba(201,130,10,0.55); }
+
+.btn-party-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(37,211,102,0.15);
+  border: 1.5px solid rgba(37,211,102,0.5);
+  color: #7CFA9A;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 14px 26px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.btn-party-wa:hover { background: rgba(37,211,102,0.25); transform: translateY(-3px); }
+
+/* ══════════════════════════════════
+   LOCATION SECTION
+══════════════════════════════════ */
+.location-section {
+  background: linear-gradient(160deg, #FDF6E3 0%, #F5EDD0 50%, #FBEFD8 100%);
+  position: relative;
+}
+
+.location-card {
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px var(--shadow-deep);
+  border: 1px solid rgba(232,160,32,0.18);
+}
+
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  background: #e8e0c8;
+}
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.map-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 60%, rgba(255,255,255,0.3) 100%);
+}
+
+.location-info {
+  padding: 28px 26px 30px;
+}
+
+.location-pin-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.pin-icon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--turmeric), var(--turmeric-deep));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(201,130,10,0.35);
+  animation: pinBounce 2.5s ease-in-out infinite;
+}
+
+.location-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brown-coffee);
+  margin-bottom: 4px;
+}
+
+.location-addr {
+  font-size: 13px;
+  color: var(--brown-mid);
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.location-meta {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.loc-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--brown-mid);
+}
+.loc-meta-icon {
+  width: 28px;
+  height: 28px;
+  background: rgba(232,160,32,0.12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.location-btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-loc {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 18px;
+  border-radius: 40px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.22s ease;
+  flex: 1;
+  justify-content: center;
+  min-width: 110px;
+}
+
+.btn-loc-primary {
+  background: var(--turmeric);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(201,130,10,0.3);
+}
+.btn-loc-primary:hover { background: var(--turmeric-deep); transform: translateY(-2px); }
+
+.btn-loc-outline {
+  background: transparent;
+  border: 1.5px solid rgba(90,45,12,0.25);
+  color: var(--brown-coffee);
+}
+.btn-loc-outline:hover { border-color: var(--turmeric); color: var(--turmeric-deep); background: rgba(232,160,32,0.05); }
+
+.btn-loc-wa {
+  background: rgba(37,211,102,0.1);
+  border: 1.5px solid rgba(37,211,102,0.4);
+  color: #1B9A48;
+}
+.btn-loc-wa:hover { background: rgba(37,211,102,0.2); }
+
+/* ══════════════════════════════════
+   FOOTER
+══════════════════════════════════ */
+.footer {
+  background: #1E1008;
+  padding: 50px 24px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--green-deep), var(--turmeric), var(--orange-muted), var(--turmeric), var(--green-deep));
+}
+
+.footer-kolam {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.del-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(135deg, rgba(232,160,32,0.15), rgba(208,98,26,0.12));
+  border: 1px solid rgba(232,160,32,0.3);
+  border-radius: 50px;
+  padding: 14px 28px;
+  margin-bottom: 36px;
+}
+.del-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--turmeric-pale);
+  letter-spacing: 2px;
+}
+
+.qr-wrap {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(232,160,32,0.3);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 24px rgba(232,160,32,0.1);
+}
+
+.qr-label {
+  font-size: 9px;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: rgba(245,208,128,0.4);
+  margin-bottom: 28px;
+}
+
+.ft-divider {
+  width: 160px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232,160,32,0.3), transparent);
+  margin: 0 auto 22px;
+}
+
+.ft-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--turmeric);
+  margin-bottom: 6px;
+}
+
+.ft-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  letter-spacing: 3px;
+  color: rgba(245,208,128,0.5);
+  margin-bottom: 18px;
+}
+
+.ft-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.ft-contact a {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: rgba(245,208,128,0.65);
+  text-decoration: none;
+}
+.ft-contact a:hover { color: var(--turmeric-pale); }
+
+.ft-social {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.social-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(232,160,32,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.social-btn:hover {
+  background: rgba(232,160,32,0.15);
+  border-color: var(--turmeric);
+  transform: translateY(-3px);
+}
+
+.ft-motif {
+  font-size: 11px;
+  letter-spacing: 6px;
+  color: rgba(232,160,32,0.2);
+  margin-bottom: 16px;
+}
+
+.ft-copy {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: rgba(245,208,128,0.2);
+}
+
+.ft-loc-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 3px;
+  color: rgba(245,208,128,0.3);
+  margin-top: 10px;
+}
+
+/* ══════════════════════════════════
+   FLOATING WHATSAPP
+══════════════════════════════════ */
+.wa-float {
+  position: fixed;
+  bottom: 28px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #25D366 0%, #1aab52 100%);
+  border-radius: 50px;
+  padding: 14px 20px 14px 16px;
+  box-shadow: 0 6px 28px rgba(37,211,102,0.45), 0 2px 10px rgba(0,0,0,0.2);
+  text-decoration: none;
+  animation: waBounce 3s ease-in-out infinite;
+  transition: all 0.25s ease;
+}
+.wa-float:hover {
+  animation: none;
+  transform: scale(1.06) translateY(-4px);
+  box-shadow: 0 10px 36px rgba(37,211,102,0.6), 0 4px 16px rgba(0,0,0,0.25);
+}
+.wa-icon { font-size: 24px; line-height: 1; }
+.wa-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media (max-width: 480px) {
+  .hero { padding: 70px 20px 50px; min-height: 100svh; }
+  .hero-ctas { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-secondary { width: 100%; max-width: 280px; justify-content: center; }
+  .food-pill { font-size: 10px; padding: 6px 10px; }
+  .hero-food-row { gap: 8px; }
+  .party-cards { grid-template-columns: 1fr; }
+  .party-card:first-child { grid-column: auto; }
+  .party-ctas { flex-direction: column; align-items: center; }
+  .btn-party, .btn-party-wa { width: 100%; max-width: 300px; justify-content: center; }
+  .location-btns { flex-direction: column; }
+  .btn-loc { min-width: auto; }
+  .wa-float { bottom: 20px; right: 16px; padding: 12px 16px 12px 14px; }
+  .wa-label { display: none; }
+  .wa-float { border-radius: 50%; padding: 16px; }
+}
+
+@media (max-width: 360px) {
+  .hero-title { font-size: 44px; }
+  .hero-title-cafe { font-size: 28px; letter-spacing: 12px; }
+}
+
+/* ── Scroll animations ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- ══ FLOATING WHATSAPP ══ -->
+<a href="https://wa.me/919501655506" target="_blank" rel="noopener" class="wa-float" aria-label="Order on WhatsApp">
+  <span class="wa-icon">💬</span>
+  <span class="wa-label">Order on WhatsApp</span>
+</a>
+
+<!-- ══════════════════════════════════
+     HERO
+══════════════════════════════════ -->
+<section class="hero" id="home">
+
+  <!-- Kolam background -->
+  <svg class="hero-kolam" width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="rgba(232,160,32,1)" stroke-width="0.8">
+      <circle cx="250" cy="250" r="220" stroke-dasharray="8 12"/>
+      <circle cx="250" cy="250" r="180" stroke-dasharray="5 10"/>
+      <circle cx="250" cy="250" r="140" stroke-dasharray="4 8"/>
+      <circle cx="250" cy="250" r="100" stroke-dasharray="3 6"/>
+      <circle cx="250" cy="250" r="60" stroke-dasharray="2 5"/>
+      <line x1="30" y1="250" x2="470" y2="250"/>
+      <line x1="250" y1="30" x2="250" y2="470"/>
+      <line x1="94" y1="94" x2="406" y2="406"/>
+      <line x1="406" y1="94" x2="94" y2="406"/>
+      <polygon points="250,30 406,94 470,250 406,406 250,470 94,406 30,250 94,94" stroke-dasharray="6 6"/>
+      <polygon points="250,90 371,139 420,250 371,361 250,410 129,361 80,250 129,139" stroke-dasharray="4 6"/>
+      <g transform="translate(250,250)">
+        <ellipse rx="30" ry="50" transform="rotate(0)"/>
+        <ellipse rx="30" ry="50" transform="rotate(45)"/>
+        <ellipse rx="30" ry="50" transform="rotate(90)"/>
+        <ellipse rx="30" ry="50" transform="rotate(135)"/>
+      </g>
+    </g>
+  </svg>
+
+  <div class="hero-content">
+    <!-- Steam -->
+    <div class="steam-wrap" aria-hidden="true">
+      <div class="steam-bar sb1"></div>
+      <div class="steam-bar sb2"></div>
+      <div class="steam-bar sb3"></div>
+      <div class="steam-bar sb4"></div>
+      <div class="steam-bar sb5"></div>
+    </div>
+
+    <div class="hero-badge">🛵 Free Home Delivery Available</div>
+
+    <span class="hero-eyebrow">The</span>
+    <h1>
+      <span class="hero-title">South</span><br>
+      <span class="hero-title-cafe">Cafe</span>
+    </h1>
+
+    <div class="hero-divider"></div>
+    <div class="hero-ornament">✦ ◆ ✦ ◆ ✦</div>
+    <p class="hero-sub">Authentic South Indian Flavours</p>
+    <p class="hero-phone">📞 +91 95016 55506</p>
+
+    <div class="hero-ctas">
+      <a href="#menu" class="btn-primary">🍽️ Explore Menu</a>
+      <a href="https://wa.me/919501655506" class="btn-secondary" target="_blank" rel="noopener">💬 Order on WhatsApp</a>
+    </div>
+
+    <div class="hero-food-row">
+      <div class="food-pill">🥞 Masala Dosa</div>
+      <div class="food-pill">☕ Filter Coffee</div>
+      <div class="food-pill">⚪ Idli Sambar</div>
+      <div class="food-pill">🫓 Uttapam</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     MENU SECTION
+══════════════════════════════════ -->
+<section class="section menu-section" id="menu">
+  <div class="menu-header menu-intro reveal">
+    <div class="section-tag">Our Menu</div>
+    <h2 class="section-title">Fresh From The Kitchen</h2>
+    <p class="section-sub">Every dish crafted with authentic South Indian spices and love. Made fresh, served warm.</p>
+  </div>
+
+  <!-- ── SOUTH INDIAN ── -->
+  <div class="cat reveal">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">🥞</div>
+        <div class="cat-info">
+          <div class="cat-name">South Indian</div>
+          <div class="cat-sub">Freshly Made Every Morning</div>
+        </div>
+        <span class="cat-count">9 Items</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">Plain Dosa</span><span class="i-price">₹120</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Masala Dosa</span><span class="i-best-tag">Best Seller</span><span class="i-price">₹150</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Butter Masala Dosa</span><span class="i-price">₹160</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Onion Masala Dosa</span><span class="i-price">₹160</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Mysore Dosa</span><span class="i-price">₹170</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Paneer Masala Dosa</span><span class="i-best-tag">Chef's Pick</span><span class="i-price">₹180</span></div>
+      <div class="item i-featured"><div class="item-veg"></div><span class="i-name">Signature Cheese Burst Dosa</span><span class="i-best-tag">Must Try</span><span class="i-price">₹220</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Pizza Dosa</span><span class="i-price">₹270</span></div>
+      <div class="item i-featured"><div class="item-veg"></div><span class="i-name">Family Dosa 3 ft</span><span class="i-best-tag">Party Special</span><span class="i-price">₹400</span></div>
+    </div>
+  </div>
+
+  <!-- ── UTTAPAM ── -->
+  <div class="cat reveal reveal-delay-1">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">🫓</div>
+        <div class="cat-info">
+          <div class="cat-name">Uttapam</div>
+          <div class="cat-sub">Soft & Fluffy</div>
+        </div>
+        <span class="cat-count">2 Items</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">Onion Uttapam</span><span class="i-price">₹180</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Mix Veg. Uttapam</span><span class="i-best-tag">Popular</span><span class="i-price">₹200</span></div>
+    </div>
+  </div>
+
+  <!-- ── IDLI ── -->
+  <div class="cat reveal reveal-delay-2">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">⚪</div>
+        <div class="cat-info">
+          <div class="cat-name">Idli</div>
+          <div class="cat-sub">Steamed to Perfection</div>
+        </div>
+        <span class="cat-count">2 Items</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">Idli Sambar (2 Pcs.)</span><span class="i-best-tag">Breakfast Fav</span><span class="i-price">₹90</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Vada Sambar (2 Pcs.)</span><span class="i-price">₹90</span></div>
+    </div>
+  </div>
+
+  <!-- ── RAWA DOSA ── -->
+  <div class="cat reveal">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">🧇</div>
+        <div class="cat-info">
+          <div class="cat-name">Rawa Dosa</div>
+          <div class="cat-sub">Crispy & Light</div>
+        </div>
+        <span class="cat-count">4 Items</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">Plain Rawa Dosa</span><span class="i-price">₹150</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Onion Rawa Dosa</span><span class="i-price">₹160</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Rawa Masala Dosa</span><span class="i-best-tag">Popular</span><span class="i-price">₹170</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Rawa Paneer Dosa</span><span class="i-price">₹190</span></div>
+    </div>
+  </div>
+
+  <div class="sep">
+    <div class="sep-inner">
+      <span class="sep-leaf">🍃</span>
+      <span>— Street Favourites —</span>
+      <span class="sep-leaf">🍃</span>
+    </div>
+  </div>
+
+  <!-- ── RICE ── -->
+  <div class="cat reveal">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">🍚</div>
+        <div class="cat-info">
+          <div class="cat-name">Rice</div>
+          <div class="cat-sub">Wok Tossed & Flavourful</div>
+        </div>
+        <span class="cat-count">3 Items</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">Veg Fried Rice</span><span class="i-price">₹200</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Chilly Garlic Fried Rice</span><span class="i-best-tag">Spicy 🌶</span><span class="i-price">₹200</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Paneer Fried Rice</span><span class="i-price">₹230</span></div>
+    </div>
+  </div>
+
+  <!-- ── PAV BHAJI ── -->
+  <div class="cat reveal reveal-delay-1">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">🥘</div>
+        <div class="cat-info">
+          <div class="cat-name">Pav Bhaji</div>
+          <div class="cat-sub">Butter Loaded Goodness</div>
+        </div>
+        <span class="cat-count">3 Items</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">Extra Pav</span><span class="i-price">₹20</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Extra Bhaji</span><span class="i-price">₹30</span></div>
+      <div class="item i-featured"><div class="item-veg"></div><span class="i-name">Butter Pav Bhaji</span><span class="i-best-tag">Must Try</span><span class="i-price">₹100</span></div>
+    </div>
+  </div>
+
+  <!-- ── BOMBAY VADA PAV ── -->
+  <div class="cat reveal reveal-delay-2">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">🥔</div>
+        <div class="cat-info">
+          <div class="cat-name">Bombay Vada Pav</div>
+          <div class="cat-sub">Mumbai Street Style</div>
+        </div>
+        <span class="cat-count">1 Item</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">Butter Vada Pav</span><span class="i-best-tag">Street Classic</span><span class="i-price">₹60</span></div>
+    </div>
+  </div>
+
+  <div class="sep">
+    <div class="sep-inner">
+      <span class="sep-leaf">🌶️</span>
+      <span>— Continental & Indo–Chinese —</span>
+      <span class="sep-leaf">🌶️</span>
+    </div>
+  </div>
+
+  <!-- ── CHINESE ── -->
+  <div class="cat reveal">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">🥢</div>
+        <div class="cat-info">
+          <div class="cat-name">Chinese</div>
+          <div class="cat-sub">Indo-Chinese Delights</div>
+        </div>
+        <span class="cat-count">5 Items</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">Spring Roll</span><span class="i-price">₹120</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Cheese Corn Roll</span><span class="i-price">₹150</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Manchurian Dry / Gravy</span><span class="i-price">₹200</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Honey Chilly Potato</span><span class="i-best-tag">Fan Fav</span><span class="i-price">₹200</span></div>
+      <div class="item i-featured"><div class="item-veg"></div><span class="i-name">Cheese Chilly Dry / Gravy</span><span class="i-best-tag">Must Try</span><span class="i-price">₹300</span></div>
+    </div>
+  </div>
+
+  <!-- ── NOODLES ── -->
+  <div class="cat reveal reveal-delay-1">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">🍜</div>
+        <div class="cat-info">
+          <div class="cat-name">Noodles</div>
+          <div class="cat-sub">Tossed Fresh Every Order</div>
+        </div>
+        <span class="cat-count">3 Items</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">Veg Noodles</span><span class="i-price">₹200</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Hakka Noodles</span><span class="i-price">₹200</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Chilly Garlic Noodles</span><span class="i-best-tag">Spicy 🌶</span><span class="i-price">₹200</span></div>
+    </div>
+  </div>
+
+  <!-- ── BURGER ── -->
+  <div class="cat reveal reveal-delay-2">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">🍔</div>
+        <div class="cat-info">
+          <div class="cat-name">Burger</div>
+          <div class="cat-sub">Stacked & Saucy</div>
+        </div>
+        <span class="cat-count">4 Items</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">Aloo Tikki Burger</span><span class="i-price">₹40</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Double Tikki Burger</span><span class="i-price">₹60</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Cheese Burger</span><span class="i-best-tag">Popular</span><span class="i-price">₹60</span></div>
+      <div class="item i-featured"><div class="item-veg"></div><span class="i-name">Burger + Coke + Fries Combo</span><span class="i-best-tag">Best Value</span><span class="i-price">₹110</span></div>
+    </div>
+  </div>
+
+  <!-- ── SANDWICH ── -->
+  <div class="cat reveal">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">🥪</div>
+        <div class="cat-info">
+          <div class="cat-name">Sandwich</div>
+          <div class="cat-sub">Grilled to Perfection</div>
+        </div>
+        <span class="cat-count">4 Items</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">Veg. Grilled Sandwich</span><span class="i-price">₹100</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Cheese Grilled Sandwich</span><span class="i-price">₹120</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Paneer Tikka Sandwich</span><span class="i-best-tag">Chef's Pick</span><span class="i-price">₹140</span></div>
+      <div class="item i-featured"><div class="item-veg"></div><span class="i-name">Sandwich + Coke + Fries Combo</span><span class="i-best-tag">Best Value</span><span class="i-price">₹150</span></div>
+    </div>
+  </div>
+
+  <!-- ── FRENCH FRIES ── -->
+  <div class="cat reveal reveal-delay-1">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">🍟</div>
+        <div class="cat-info">
+          <div class="cat-name">French Fries</div>
+          <div class="cat-sub">Golden & Crispy</div>
+        </div>
+        <span class="cat-count">3 Items</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">Classic French Fries</span><span class="i-price">₹120</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Peri Peri Fries</span><span class="i-best-tag">Spicy 🌶</span><span class="i-price">₹150</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Cheese Fries</span><span class="i-best-tag">Fan Fav</span><span class="i-price">₹150</span></div>
+    </div>
+  </div>
+
+  <!-- ── PASTA ── -->
+  <div class="cat reveal reveal-delay-2">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">🍝</div>
+        <div class="cat-info">
+          <div class="cat-name">Pasta</div>
+          <div class="cat-sub">Creamy & Rich</div>
+        </div>
+        <span class="cat-count">3 Items</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">White Cream Pasta</span><span class="i-price">₹200</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Red Sauce Pasta</span><span class="i-price">₹200</span></div>
+      <div class="item i-featured"><div class="item-veg"></div><span class="i-name">Mix Sauce Pasta</span><span class="i-best-tag">Chef's Pick</span><span class="i-price">₹200</span></div>
+    </div>
+  </div>
+
+  <div class="sep">
+    <div class="sep-inner">
+      <span class="sep-leaf">☕</span>
+      <span>— Beverages —</span>
+      <span class="sep-leaf">🍹</span>
+    </div>
+  </div>
+
+  <!-- ── CHAI ── -->
+  <div class="cat reveal">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">☕</div>
+        <div class="cat-info">
+          <div class="cat-name">Chai</div>
+          <div class="cat-sub">Freshly Brewed Every Hour</div>
+        </div>
+        <span class="cat-count">3 Items</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">Plain Chai</span><span class="i-price">₹40</span></div>
+      <div class="item i-featured"><div class="item-veg"></div><span class="i-name">Masala Chai</span><span class="i-best-tag">Fan Fav</span><span class="i-price">₹50</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Dudh Patti</span><span class="i-price">₹70</span></div>
+    </div>
+  </div>
+
+  <!-- ── HOT COFFEE ── -->
+  <div class="cat reveal reveal-delay-1">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">☕</div>
+        <div class="cat-info">
+          <div class="cat-name">Hot Coffee</div>
+          <div class="cat-sub">South Indian Style</div>
+        </div>
+        <span class="cat-count">1 Item</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item i-featured"><div class="item-veg"></div><span class="i-name">Shaadi Wali Coffee</span><span class="i-best-tag">Signature</span><span class="i-price">₹70</span></div>
+    </div>
+  </div>
+
+  <!-- ── COLD COFFEE ── -->
+  <div class="cat reveal reveal-delay-2">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">🧊</div>
+        <div class="cat-info">
+          <div class="cat-name">Cold Coffee</div>
+          <div class="cat-sub">Chilled & Refreshing</div>
+        </div>
+        <span class="cat-count">4 Items</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">Cold Coffee</span><span class="i-price">₹100</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Vanilla Cold Coffee</span><span class="i-price">₹120</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Chocolate Cold Coffee</span><span class="i-best-tag">Popular</span><span class="i-price">₹120</span></div>
+      <div class="item i-featured"><div class="item-veg"></div><span class="i-name">Cold Coffee with Ice Cream</span><span class="i-best-tag">Must Try</span><span class="i-price">₹120</span></div>
+    </div>
+  </div>
+
+  <!-- ── MOCKTAIL ── -->
+  <div class="cat reveal">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">🍹</div>
+        <div class="cat-info">
+          <div class="cat-name">Mocktail</div>
+          <div class="cat-sub">Crafted Fresh Daily</div>
+        </div>
+        <span class="cat-count">5 Items</span>
+      </div>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item-veg"></div><span class="i-name">Coke Glass</span><span class="i-price">₹30</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Nimboo Pani</span><span class="i-price">₹60</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Nimboo Masala Soda</span><span class="i-price">₹70</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Virgin Mojito</span><span class="i-best-tag">Refreshing</span><span class="i-price">₹100</span></div>
+      <div class="item"><div class="item-veg"></div><span class="i-name">Kala Khatta Banta</span><span class="i-best-tag">Desi Special</span><span class="i-price">₹100</span></div>
+    </div>
+  </div>
+
+  <!-- ── SHAKES ── -->
+  <div class="cat reveal reveal-delay-1">
+    <div class="cat-hdr">
+      <div class="cat-row">
+        <div class="cat-icon-wrap">🥤</div>
+        <div class="cat-info">
+          <div class="cat-name">Shakes</div>
+          <div class="cat-sub">Thick & Creamy Blends</div>
+        </div>
+        <span class="cat-count">7 Flavours</span>
+      </div>
+    </div>
+    <div class="shakes-price-banner">
+      <span>All Shakes — ₹99 Each 🍨</span>
+    </div>
+    <div class="shakes-grid">
+      <div class="shake-chip"><div class="s-dot" style="background:#EDE8D8;box-shadow:0 0 6px rgba(240,230,200,0.5);"></div><span class="s-name">Vanilla</span></div>
+      <div class="shake-chip"><div class="s-dot" style="background:#4A2010;box-shadow:0 0 6px rgba(74,32,16,0.6);"></div><span class="s-name">Chocolate</span></div>
+      <div class="shake-chip"><div class="s-dot" style="background:#E04870;box-shadow:0 0 6px rgba(224,72,112,0.5);"></div><span class="s-name">Strawberry</span></div>
+      <div class="shake-chip"><div class="s-dot" style="background:#D4A010;box-shadow:0 0 6px rgba(212,160,16,0.5);"></div><span class="s-name">Pineapple</span></div>
+      <div class="shake-chip"><div class="s-dot" style="background:#4A1E70;box-shadow:0 0 6px rgba(74,30,112,0.6);"></div><span class="s-name">Black Current</span></div>
+      <div class="shake-chip"><div class="s-dot" style="background:#C09028;box-shadow:0 0 6px rgba(192,144,40,0.5);"></div><span class="s-name">Butter Scotch</span></div>
+      <div class="shake-chip"><div class="s-dot" style="background:#2A2A2A;box-shadow:0 0 6px rgba(60,60,60,0.6);"></div><span class="s-name">Oreo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     PARTY & EVENTS SECTION
+══════════════════════════════════ -->
+<section class="section party-section" id="events">
+  <!-- Background kolam -->
+  <svg class="party-kolam" width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="rgba(232,160,32,1)" stroke-width="0.8">
+      <circle cx="200" cy="200" r="180" stroke-dasharray="8 12"/>
+      <circle cx="200" cy="200" r="140" stroke-dasharray="5 9"/>
+      <circle cx="200" cy="200" r="100" stroke-dasharray="4 7"/>
+      <circle cx="200" cy="200" r="60" stroke-dasharray="3 6"/>
+      <line x1="20" y1="200" x2="380" y2="200"/>
+      <line x1="200" y1="20" x2="200" y2="380"/>
+      <line x1="73" y1="73" x2="327" y2="327"/>
+      <line x1="327" y1="73" x2="73" y2="327"/>
+    </g>
+  </svg>
+
+  <div class="party-header reveal">
+    <div class="section-tag" style="color:var(--turmeric-pale);justify-content:center;">✦ Events & Celebrations ✦</div>
+    <h2 class="party-title">Celebrate Your Special<br>Moments With Us</h2>
+    <p class="party-sub">Birthday parties, kitty parties & group food orders now available at The South Cafe.</p>
+  </div>
+
+  <div class="party-cards">
+    <div class="party-card reveal">
+      <span class="party-icon">🎂</span>
+      <div class="party-card-title">Birthday Parties</div>
+      <div class="party-card-desc">Special setups, custom platters & surprise birthday arrangements for your loved ones.</div>
+    </div>
+    <div class="party-card reveal reveal-delay-1">
+      <span class="party-icon">👸</span>
+      <div class="party-card-title">Kitty Parties</div>
+      <div class="party-card-desc">Exclusive tables, group menus & premium hosting for ladies' gatherings.</div>
+    </div>
+    <div class="party-card reveal reveal-delay-2">
+      <span class="party-icon">🥘</span>
+      <div class="party-card-title">Event Catering</div>
+      <div class="party-card-desc">Bulk food orders & fresh catering for small events and occasions.</div>
+    </div>
+    <div class="party-card reveal reveal-delay-1">
+      <span class="party-icon">👨‍👩‍👧‍👦</span>
+      <div class="party-card-title">Family Gatherings</div>
+      <div class="party-card-desc">Warm, cozy ambience with family-sized platters and customized menus.</div>
+    </div>
+    <div class="party-card reveal reveal-delay-2">
+      <span class="party-icon">🎉</span>
+      <div class="party-card-title">Group Bookings</div>
+      <div class="party-card-desc">Reserve the cafe for your group — private setups available on request.</div>
+    </div>
+  </div>
+
+  <div class="party-ctas reveal">
+    <a href="https://wa.me/919501655506?text=Hi%2C%20I%20want%20to%20book%20a%20party%20at%20The%20South%20Cafe" class="btn-party" target="_blank" rel="noopener">🎂 Book Your Party</a>
+    <a href="https://wa.me/919501655506" class="btn-party-wa" target="_blank" rel="noopener">💬 Order on WhatsApp</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     LOCATION SECTION
+══════════════════════════════════ -->
+<section class="section location-section" id="location">
+  <div class="menu-intro reveal" style="text-align:center;margin-bottom:36px;">
+    <div class="section-tag">Find Us</div>
+    <h2 class="section-title">Visit The South Cafe</h2>
+    <p class="section-sub">Come experience the warmth of authentic South Indian hospitality.</p>
+  </div>
+
+  <div class="location-card reveal">
+    <div class="map-container">
+      <iframe
+        src="https://maps.google.com/maps?q=Railway+Rd+near+Bhambri+Dental+Clinic+SBS+Nagar+Doraha+Punjab&output=embed&z=15"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="The South Cafe Location"
+      ></iframe>
+      <div class="map-overlay"></div>
+    </div>
+
+    <div class="location-info">
+      <div class="location-pin-row">
+        <div class="pin-icon">📍</div>
+        <div>
+          <div class="location-name">The South Cafe</div>
+          <div class="location-addr">Railway Rd, near Bhambri Dental Clinic,<br>SBS Nagar, Doraha, Punjab</div>
+        </div>
+      </div>
+
+      <div class="location-meta">
+        <div class="loc-meta-item">
+          <div class="loc-meta-icon">📞</div>
+          <span>+91 95016 55506</span>
+        </div>
+        <div class="loc-meta-item">
+          <div class="loc-meta-icon">🛵</div>
+          <span>Free Home Delivery</span>
+        </div>
+        <div class="loc-meta-item">
+          <div class="loc-meta-icon">⏰</div>
+          <span>Open Daily</span>
+        </div>
+      </div>
+
+      <div class="location-btns">
+        <a href="https://maps.app.goo.gl/L6HtGojkX3h3twFE9" target="_blank" rel="noopener" class="btn-loc btn-loc-primary">📍 Get Directions</a>
+        <a href="tel:+919501655506" class="btn-loc btn-loc-outline">📞 Call Now</a>
+        <a href="https://wa.me/919501655506" target="_blank" rel="noopener" class="btn-loc btn-loc-wa">💬 WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     FOOTER
+══════════════════════════════════ -->
+<footer class="footer">
+  <!-- Kolam background -->
+  <svg class="footer-kolam" width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="rgba(232,160,32,1)" stroke-width="0.7">
+      <circle cx="150" cy="150" r="130" stroke-dasharray="6 10"/>
+      <circle cx="150" cy="150" r="100" stroke-dasharray="4 8"/>
+      <circle cx="150" cy="150" r="70" stroke-dasharray="3 6"/>
+      <line x1="20" y1="150" x2="280" y2="150"/>
+      <line x1="150" y1="20" x2="150" y2="280"/>
+      <line x1="58" y1="58" x2="242" y2="242"/>
+      <line x1="242" y1="58" x2="58" y2="242"/>
+    </g>
+  </svg>
+
+  <div class="del-banner">
+    <span>🛵</span>
+    <span class="del-text">Free Home Delivery Available</span>
+    <span>🛵</span>
+  </div>
+
+  <div class="ft-divider"></div>
+
+  <div class="ft-brand">THE SOUTH CAFE</div>
+  <div class="ft-tag">Authentic South Indian Flavours</div>
+
+  <div class="ft-contact">
+    <a href="tel:+919501655506">📞 +91 95016 55506</a>
+    <a href="https://wa.me/919501655506" target="_blank" rel="noopener">💬 Chat on WhatsApp</a>
+  </div>
+
+  <div class="ft-social">
+    <a href="#" class="social-btn" aria-label="Instagram">📸</a>
+    <a href="https://wa.me/919501655506" class="social-btn" aria-label="WhatsApp" target="_blank" rel="noopener">💬</a>
+    <a href="tel:+919501655506" class="social-btn" aria-label="Call">📞</a>
+    <a href="https://maps.app.goo.gl/L6HtGojkX3h3twFE9" class="social-btn" aria-label="Location" target="_blank" rel="noopener">📍</a>
+  </div>
+
+  <div class="ft-motif">✦ ◆ ✦ ◆ ✦ ◆ ✦</div>
+  <div class="ft-loc-tag">Railway Rd, SBS Nagar, Doraha, Punjab</div>
+  <div class="ft-copy" style="margin-top:16px;">© 2025 The South Cafe. All rights reserved.</div>
+</footer>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => io.observe(el));
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
